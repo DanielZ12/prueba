@@ -9,8 +9,23 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
+      room: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      
+      count_days:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      statusId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: "Status"
+          },
+          key : 'id'
+        }
       },
       createdAt: {
         allowNull: false,
