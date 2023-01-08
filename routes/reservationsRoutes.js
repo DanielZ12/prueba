@@ -5,5 +5,8 @@ const {all, create, update, remove } = require("../controllers/reservationsContr
 
 router
     .get("/", all)
+    .post("/", create)
+    .put("/:id", update)
+    .put("/delete/:id", remove)
 
 module.exports = router    
