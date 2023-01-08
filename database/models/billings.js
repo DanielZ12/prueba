@@ -12,26 +12,26 @@ module.exports = (sequelize, DataTypes) => {
     /* DataTypes y Validations */
     fullName: {
       type: DataTypes.STRING,
-      validate:{          //Validamos que los datons ingresados sean letras
-        isAlpha: true,
-      }
     },
     identification: {
       type: DataTypes.INTEGER,
       validate:{          //Validamos que los datons ingresados sean numeros
         isNumeric: true,
+        isInt: {
+          msg: "Debes ingresar un valor numerico"
+        }
       }
     },
     methodPaid: {
-      type: DataTypes.INTEGER,
-      validate:{          //Validamos que los datons ingresados sean numeros
-        isNumeric: true,
-      }
+      type: DataTypes.STRING,
     },
     totalPaid: {
       type: DataTypes.INTEGER,
       validate:{          //Validamos que los datons ingresados sean numeros
         isNumeric: true,
+        isInt: {
+          msg: "Debes ingresar un valor numerico"
+        }
       }
     }
   }, {

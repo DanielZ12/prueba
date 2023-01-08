@@ -69,7 +69,7 @@ module.exports = {
     try {
       const { id } = req.params;
       
-      if(id === "a"){
+      if(isNaN(id)){
         return res.status(401).json({
           ok: false,
           msg: "valor de parametro incorrecto",
@@ -105,7 +105,7 @@ module.exports = {
     
         try {
             const {id} = req.params
-            if(id === "a"){
+            if(isNaN(id)){
               return res.status(401).json({
                 ok: false,
                 msg: "valor de parametro incorrecto",

@@ -44,6 +44,21 @@ localhost:3030/reservation/1 = Podremos cambiar el estado de la facturacion de p
 ```
 * PUT Remove reservation
 ```
-localhost:3030/reservation/1 = Podremos cambiar el estado de la facturacion a eliminado agregandole el id de en el params
+localhost:3030/reservation/delete/1 = Podremos cambiar el estado de la facturacion a eliminado agregandole el id de en el params
 ```
+* GET All billing
+```
+localhost:3030/billing = Podremos todas las facturaciones de la base de datos
+```
+* POST All billing
+```
+localhost:3030/billing = Podremos crear facturaciones. Ejemplo:
+{
+    "fullName": "alan",
+    "identification": 41009319,
+    "methodPaid": "efectivo",
+    "totalPaid": "1000"
+}
+```
+
 
