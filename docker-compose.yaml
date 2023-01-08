@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+
+   db:
+     image: mysql:8.0.31
+     container_name: db
+     volumes:
+       - ./mysql:/var/lib/mysql/
+     environment:
+       MYSQL_ROOT_PASSWORD: pruebatecnica
+       MYSQL_DATABASE: hotel
+
+   api:
+     image: api-prueba:1.0.0
+     container_name: api
+     depends_on:
+       - db
+     command: npm start
+     ports:
+       - "3030:3030"
+     environment:
+       MYSQL_ROOT_PASSWORD: pruebatecnica
+       MYSQL_DATABASE: hotel
