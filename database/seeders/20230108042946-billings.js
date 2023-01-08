@@ -4,7 +4,7 @@ const billings = [{
   fullName: "Daniel",
   identification: 41009319,
   methodPaid: "Tarjeta",
-  totalPaid: 5,
+  totalPaid: 2000,
   createdAt: new Date(),
   updatedAt: new Date(),
 }]

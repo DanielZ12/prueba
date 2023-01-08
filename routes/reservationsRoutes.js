@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const {all, create, update, remove } = require("../controllers/reservationsController")
-
+/* RUTAS */
 router
     .get("/", all)
     .post("/", create)

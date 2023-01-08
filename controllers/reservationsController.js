@@ -1,6 +1,7 @@
 const db = require("../database/models");
 
 module.exports = {
+  /* -------Visualizar todas las reservas------- */
   all: async (req, res) => {
     try {
       const reservations = await db.Reservation.findAll({
@@ -19,10 +20,17 @@ module.exports = {
       console.log("ERROR", e);
     }
   },
+  /* -------Creamos una reserva------- */
   create: async (req, res) => {
     try {
       const { room, countDays, billingId, statusId } = req.body;
-      if (billingId) {
+      if (!room || !countDays) {
+        return res.status(401).json({
+          ok: false,
+          msg: "Es necesario ingresar una habitacion y catidad de dias para realizar la reserva",
+        });
+      }
+        if (billingId) {
         const billing = await db.Billing.findByPk(billingId);
         if (billing) {
           const reservation = await db.Reservation.create({
@@ -56,11 +64,18 @@ module.exports = {
       });
     }
   },
+  /* -------Cambiamos el estado de la reserverva en el caso que este pendiente a pagado------- */
   update: async (req, res) => {
     try {
       const { id } = req.params;
-      const { billingId } = req.body;
-
+      
+      if(id === "a"){
+        return res.status(401).json({
+          ok: false,
+          msg: "valor de parametro incorrecto",
+        });
+      }
+      const { billingId, coundDays } = req.body;
       const billing = await db.Billing.findByPk(billingId);
       if (billing) {
         const updateReservation = await db.Reservation.update(
@@ -77,7 +92,7 @@ module.exports = {
         return res.status(201).json({
             ok: true,
             status: 201,
-            data: updateReservation
+            msg: "Cambio de estado realizado"
         })
         
       }
@@ -85,10 +100,17 @@ module.exports = {
         console.log();
     }
   },
+  /* -------Cambiamos el estado de la reserverva a Eliminado------- */
   remove: async(req, res) => {
     
         try {
             const {id} = req.params
+            if(id === "a"){
+              return res.status(401).json({
+                ok: false,
+                msg: "valor de parametro incorrecto",
+              });
+            }
             await db.Reservation.update(
                 {
                   statusId: 3,

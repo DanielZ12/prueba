@@ -9,10 +9,31 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Billing.init({
-    fullName: DataTypes.STRING,
-    identification: DataTypes.INTEGER,
-    methodPaid: DataTypes.STRING,
-    totalPaid: DataTypes.INTEGER
+    /* DataTypes y Validations */
+    fullName: {
+      type: DataTypes.STRING,
+      validate:{          //Validamos que los datons ingresados sean letras
+        isAlpha: true,
+      }
+    },
+    identification: {
+      type: DataTypes.INTEGER,
+      validate:{          //Validamos que los datons ingresados sean numeros
+        isNumeric: true,
+      }
+    },
+    methodPaid: {
+      type: DataTypes.INTEGER,
+      validate:{          //Validamos que los datons ingresados sean numeros
+        isNumeric: true,
+      }
+    },
+    totalPaid: {
+      type: DataTypes.INTEGER,
+      validate:{          //Validamos que los datons ingresados sean numeros
+        isNumeric: true,
+      }
+    }
   }, {
     sequelize,
     timestamps: true,

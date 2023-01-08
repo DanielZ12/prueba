@@ -10,10 +10,37 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Reservation.init({
-    room: DataTypes.INTEGER,
-    countDays: DataTypes.INTEGER,
-    billingId: DataTypes.INTEGER,
-    statusId: DataTypes.INTEGER
+    /* DataTypes y Validations */
+    room: {
+      type: DataTypes.INTEGER,
+      validate:{          //Validamos que los datons ingresados sean numeros
+        isNumeric: true,
+        isInt: {
+          msg: "Debes ingresar un valor numerico"
+        }
+      }
+    },
+    countDays:{
+      type: DataTypes.INTEGER,
+      validate:{          //Validamos que los datons ingresados sean numeros
+        isNumeric: true,
+        isInt: {
+          msg: "Debes ingresar un valor numerico"
+        }
+      }
+    },
+    billingId: {
+      type: DataTypes.INTEGER,
+      validate:{          //Validamos que los datons ingresados sean numeros
+        isNumeric: true,
+      }
+    },
+    statusId: {
+      type: DataTypes.INTEGER,
+      validate:{          //Validamos que los datons ingresados sean numeros
+        isNumeric: true,
+      }
+    }
   }, {
     sequelize,
     timestamps: true,

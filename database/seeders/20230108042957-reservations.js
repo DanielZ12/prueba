@@ -3,7 +3,7 @@
 const reservations= [
   {
     room: 24,
-    countDays: 5,
+    countDays: 2,
     billingId: 1,
     statusId: 1
   }
