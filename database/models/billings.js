@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Billing extends Model {
     static associate(models) {
-      Billing.hasMany(models.Reservastion)
+      Billing.hasMany(models.Reservation)
     }
   }
   Billing.init({
