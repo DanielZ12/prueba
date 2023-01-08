@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3030;
 
 
-const reservationRouter = require("./routes/reservation")
+const reservationRouter = require("./routes/reservationsRoutes")
 
 app.use("/reservation", reservationRouter)
 
